@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #4a4a4a;
+    overflow-x: hidden;
+}
+
+.card {
+    background-color: #e6e6e6;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    width: 1000px;
+    border-radius: 10px;
+    -webkit-box-shadow: 10px 10px 26px 0px rgba(0,0,0,1);
+    -moz-box-shadow: 10px 10px 26px 0px rgba(0,0,0,1);
+    box-shadow: 10px 10px 26px 0px rgba(0,0,0,1);
+}
