@@ -7,9 +7,9 @@ body {
 
 
 .card, .card-header {
-    background: #232526;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #26282a;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #26282a 75%, #383737);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #26282a 75%, #383737); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     border-radius: 0;
 
 
@@ -20,7 +20,7 @@ body {
 
 .card {
     border: 0;
-    background: #e6e6e6;
+    background: #f0f0f0;
     margin: 0 auto;
     margin-top: 100px;
     margin-bottom: 100px;
@@ -31,16 +31,91 @@ body {
     box-shadow: 10px 10px 26px 0px rgba(0,0,0,1);
 }
 
-.name {
-    color: white;
-    margin: 0 auto;
-    margin-top: 10px;
-    text-align: center;
+
+.card-block {
+    width: 670px;
+    margin-left: 30px;
 }
 
-.current-position {
-    color: #4a8ac7;
+.name {
+    font-size: 36px;
+    font-weight: 100;
+    line-height: 0.8;
+    color: #f2f2f2;
     margin: 0 auto;
     margin-top: 10px;
     text-align: center;
+    font-family: "neo-latina";
 }
+
+.icon {
+    color: #519abe;
+    font-size: 35px;
+}
+
+
+.right-header {
+    font-family: "Moonglade";
+    color: #555555;
+    font-weight: 600;
+}
+
+.content-right{
+    margin-top: 80px;
+}
+
+.title {
+    font-weight: bold;
+    color: #626262fa;
+    font-family: "lato";
+    font-size: 17.2px;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.location {
+    
+}
+
+.right-line {
+    width: 100%;
+    color: #519abebe;
+    size: 40px;
+    margin-top: 0px;
+    border: none;
+    height: 2.5px;
+    /* Set the hr color */
+    background-color:#519abe; /* Modern Browsers */
+}
+
+
+
+.current-position {
+    color: #30a6ea;
+    margin: 0 auto;
+    font-size: 22.8px;
+    margin-top: 5px;
+    text-align: center;
+    font-family: "neo-latina";
+}
+
+.about-me {
+    font-family: 'Lato';
+    color: #555555;
+}
+
+@font-face {
+    font-family: "neo-latina";
+    src: url(assets/fonts/neo-latina.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: "lato";
+    src: url(assets/fonts/Lato.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: "Moonglade";
+    src: url(assets/fonts/Moonglade.ttf) format('truetype');
+}
+
