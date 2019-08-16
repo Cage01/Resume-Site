@@ -1,42 +1,88 @@
 
 
 <div class="row">
-    <div class="card flex-row flex-wrap">
-          <div class="card-header border-0">
-            <img src="//placehold.it/220" alt="">
-            <div class="row">
-              <h2 class="name">Mason <br> Richardson</h2>
-            </div>
-            <div class="row">
-              <h4 class="current-position"><i>Full Stack Engineer</i></h4>
+  <div class="card flex-row flex-wrap">
 
-            </div>
+      <!--LEFT COLUMN-->
+      <div class="card-header border-0">
+        <img src="//placehold.it/220" alt="">
+        <div class="row">
+          <h2 class="name">Mason <br> Richardson</h2>
         </div>
-        <div class="card-block px-2">
-            <div class="col-lg-12">
-                <div class="row" class="content-right">
-                                     
-                    <h4 class="right-header"><i class="icon ion-md-person"></i>  About Me</h4>
-                    <hr class="right-line">
+        <div class="row">
+          <h4 class="current-position"><i>Full Stack Engineer</i></h4>
 
-                    <p class="card-text about-me">Driven and highly motivated, I have cultivated my skillset to allow me to have the ability to preform at a high level in a variety of positions. I have experience in everything from Android Development in Android Studio, and full stack web development and design on the MEAN Stack, to embedded development for microcontrollers.</p>
-                
-                </div>
+        </div>
 
-                <div class="row" style="padding-top: 130px; padding-bottom: 40px">
-                                 
-                        <h4 class="right-header"><i class="icon ion-md-briefcase"></i>  Experiences</h4>
-                        <hr class="right-line">
-    
-                        <p class="card-text title">Octillion Power Systems</p>
-                </div>
+        <!--Contact Info-->
+        <div class="row">
+          <h4 class="left-header">Contact</h4>
+          <hr class="left-line">
+        </div>
 
-            </div>
+        <div class="row content-left" placement="right"
+        ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." popoverTitle="Popover on right">
+          <p>Address: <br><p style="font-size: 12px;">3755 Sailboat Drive, Discovery Bay CA</p></p>
+        </div>
 
-              
+        <div class="row content-left">
+          <p>Phone: <br><p style="font-size: 12px;">(925) 481-4205</p></p>
+        </div>
 
+        <div class="row content-left">
+          <p>Email: <br><p style="font-size: 12px;">mason.p.richardson@gmail.com</p></p>
+        </div>
+
+        <div class="row content-left">
+          <p>Linkedin: <br><p style="font-size: 12px;"><a href= "https://www.linkedin.com/in/mason-richardson-zerotek/" target="_blank">/mason-richardson-zerotek</a></p></p>
+        </div>
+
+
+        <!--Skills-->
+        <div class="row">
+          <h4 class="left-header">Skills</h4>
+          <hr class="left-line">
+        </div>
+
+        <br />
+
+        <div class="row content-left" *ngFor="let skill of skills">
+            <span>{{skill}}</span><br />
+        </div>
+
+
+        <br />
+
+        <!--Languages-->
+        <div class="row">
+          <h4 class="left-header">Languages</h4>
+          <hr class="left-line">
         </div>
       </div>
+
+      <!--RIGHT COLUMN-->
+      <div class="card-block px-2">
+          <div class="col-lg-12">
+              <div class="row" class="content-right">
+                                   
+                  <h4 class="right-header"><i class="icon ion-md-person"></i>  About Me</h4>
+                  <hr class="right-line">
+
+                  <p class="card-text about-me">Driven and highly motivated, I have cultivated my skillset to allow me to have the ability to preform at a high level in a variety of positions. I have experience in everything from Android Development in Android Studio, and full stack web development and design on the MEAN Stack, to embedded development for microcontrollers.</p>
+              
+              </div>
+
+              <div class="row" class="content-right">
+                               
+                      <h4 class="right-header"><i class="icon ion-md-briefcase"></i>  Experiences</h4>
+                      <hr class="right-line">
+  
+                      <p class="card-text title">Octillion Power Systems</p>
+              </div>
+
+            </div>
+      </div>
+    </div>
 </div>
 
 <router-outlet></router-outlet>

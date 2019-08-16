@@ -24,22 +24,22 @@ body {
     margin: 0 auto;
     margin-top: 100px;
     margin-bottom: 100px;
-    width: 1000px;
+    width: 900px;
+    min-width: 900px;
     border-radius: 10px;
     -webkit-box-shadow: 10px 10px 26px 0px rgba(0,0,0,1);
     -moz-box-shadow: 10px 10px 26px 0px rgba(0,0,0,1);
     box-shadow: 10px 10px 26px 0px rgba(0,0,0,1);
 }
 
-
 .card-block {
-    width: 670px;
+    width: 580px;
     margin-left: 30px;
 }
 
 .name {
     font-size: 36px;
-    font-weight: 100;
+    font-weight: lighter;
     line-height: 0.8;
     color: #f2f2f2;
     margin: 0 auto;
@@ -57,17 +57,41 @@ body {
 .right-header {
     font-family: "Moonglade";
     color: #555555;
-    font-weight: 600;
+    font-weight: 400;
+}
+
+.left-header {
+    font-family: "Moonglade";
+    padding-top: 30px;
+    margin: 0 auto;
+    text-align: center;
+    color: #f2f2f2;
+    font-weight: 400;
 }
 
 .content-right{
     margin-top: 80px;
 }
 
+.content-left{
+    color: #f2f2f2;
+    margin-left: 10px;
+}
+
+.content-left p {
+    font-family: "Lato";
+}
+
+.content-left a {
+    font-family: "Lato";
+    text-decoration: underline;
+    color: #f2f2f2
+}
+
 .title {
     font-weight: bold;
     color: #626262fa;
-    font-family: "lato";
+    font-family: "Lato";
     font-size: 17.2px;
     margin-top: 10px;
     margin-left: 30px;
@@ -78,10 +102,20 @@ body {
 }
 
 .right-line {
-    width: 100%;
+    color: #519abebe;
+    margin-top: 0px;
+    border: none;
+    height: 2.5px;
+    /* Set the hr color */
+    background-color:#519abe; /* Modern Browsers */
+}
+
+.left-line {
+    width: 82%;
     color: #519abebe;
     size: 40px;
-    margin-top: 0px;
+    margin: 0 auto;
+    margin-top: 5px;
     border: none;
     height: 2.5px;
     /* Set the hr color */
@@ -104,13 +138,14 @@ body {
     color: #555555;
 }
 
+
 @font-face {
     font-family: "neo-latina";
     src: url(assets/fonts/neo-latina.ttf) format('truetype');
 }
 
 @font-face {
-    font-family: "lato";
+    font-family: "Lato";
     src: url(assets/fonts/Lato.ttf) format('truetype');
 }
 

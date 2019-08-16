@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'test';
+
+  skills: any[] = [
+    "UI/UX Design",
+    "MySQL",
+    "Digital Ocean",
+    "AWS",
+    "Linux",
+    "Git Version Control",
+    "Angular",
+    "NodeJS",
+    "REST API"
+  ]
 }
