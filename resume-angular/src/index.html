@@ -1,15 +1,75 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title>Mason Richardson</title>
-  <base href="/">
+    <meta charset="utf-8">
+    <title>Mason Richardson</title>
+    <base href="/">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="assets/favicon-32x32.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+
+    <link rel="icon" type="image/x-icon" href="assets/favicon-32x32.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> <!--320-->
 </head>
-<body>
-  <app-root></app-root>
+
+<body id="body" class="no-scroll">
+    <app-root></app-root>
 </body>
+
+<script>
+    function fadeOut() {
+
+        TweenMax.to(".myBtn", 1, {
+            y: -100,
+            opacity: 0
+        });
+
+        TweenMax.to(".screen", 2, {
+            y: -400,
+            opacity: 0,
+            ease: Power2.easeInOut,
+            delay: 2
+        });
+
+        TweenMax.from(".overlay", 2, {
+            ease: Power2.easeInOut
+        });
+
+        TweenMax.to(".overlay", 2, {
+            delay: 2.6,
+            top: "-110%",
+            ease: Expo.easeInOut
+        });
+
+        TweenMax.to(".overlay-2", 2, {
+            delay: 3,
+            top: "-110%",
+            ease: Expo.easeInOut
+        });
+
+        TweenMax.from(".content", 2, {
+            delay: 3.2,
+            opacity: 0,
+            ease: Power2.easeInOut
+        });
+
+
+        TweenMax.to(".content", 2, {
+            opacity: 1,
+            y: 0,
+            delay: 3.2,
+            ease: Power2.easeInOut
+        });
+
+        setTimeout(function () {
+            var element = document.getElementById("body");
+            element.classList.remove("no-scroll");
+        }, 3500);
+
+    }
+</script>
+
 </html>

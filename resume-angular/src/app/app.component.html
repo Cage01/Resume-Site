@@ -1,88 +1,171 @@
-
-
-<div class="row">
-  <div class="card flex-row flex-wrap">
-
-      <!--LEFT COLUMN-->
-      <div class="card-header border-0">
-        <img src="//placehold.it/220" alt="">
-        <div class="row">
-          <h2 class="name">Mason <br> Richardson</h2>
+<div class="overlay">
+        <p class="screen">M</p>
+        <div class="intro">
+                <button class="myBtn" onclick="fadeOut()">DELVE</button>
         </div>
-        <div class="row">
-          <h4 class="current-position"><i>Full Stack Engineer</i></h4>
-
-        </div>
-
-        <!--Contact Info-->
-        <div class="row">
-          <h4 class="left-header">Contact</h4>
-          <hr class="left-line">
-        </div>
-
-        <div class="row content-left" placement="right"
-        ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." popoverTitle="Popover on right">
-          <p>Address: <br><p style="font-size: 12px;">3755 Sailboat Drive, Discovery Bay CA</p></p>
-        </div>
-
-        <div class="row content-left">
-          <p>Phone: <br><p style="font-size: 12px;">(925) 481-4205</p></p>
-        </div>
-
-        <div class="row content-left">
-          <p>Email: <br><p style="font-size: 12px;">mason.p.richardson@gmail.com</p></p>
-        </div>
-
-        <div class="row content-left">
-          <p>Linkedin: <br><p style="font-size: 12px;"><a href= "https://www.linkedin.com/in/mason-richardson-zerotek/" target="_blank">/mason-richardson-zerotek</a></p></p>
-        </div>
-
-
-        <!--Skills-->
-        <div class="row">
-          <h4 class="left-header">Skills</h4>
-          <hr class="left-line">
-        </div>
-
-        <br />
-
-        <div class="row content-left" *ngFor="let skill of skills">
-            <span>{{skill}}</span><br />
-        </div>
-
-
-        <br />
-
-        <!--Languages-->
-        <div class="row">
-          <h4 class="left-header">Languages</h4>
-          <hr class="left-line">
-        </div>
-      </div>
-
-      <!--RIGHT COLUMN-->
-      <div class="card-block px-2">
-          <div class="col-lg-12">
-              <div class="row" class="content-right">
-                                   
-                  <h4 class="right-header"><i class="icon ion-md-person"></i>  About Me</h4>
-                  <hr class="right-line">
-
-                  <p class="card-text about-me">Driven and highly motivated, I have cultivated my skillset to allow me to have the ability to preform at a high level in a variety of positions. I have experience in everything from Android Development in Android Studio, and full stack web development and design on the MEAN Stack, to embedded development for microcontrollers.</p>
-              
-              </div>
-
-              <div class="row" class="content-right">
-                               
-                      <h4 class="right-header"><i class="icon ion-md-briefcase"></i>  Experiences</h4>
-                      <hr class="right-line">
-  
-                      <p class="card-text title">Octillion Power Systems</p>
-              </div>
-
-            </div>
-      </div>
     </div>
-</div>
+
+    <div class="overlay-2"></div>
+
+        <div class="row content">
+        <div class="card flex-row flex-wrap">
+
+            <!--LEFT COLUMN-->
+            <div class="card-header border-0">
+                <img src="//placehold.it/220" alt="">
+                <div class="row">
+                <h2 class="name">Mason <br> Richardson</h2>
+                </div>
+                <div class="row">
+                <h4 class="current-position"><i>Full Stack Engineer</i></h4>
+
+                </div>
+
+                <!--Contact Info-->
+                <div class="row">
+                <h4 class="left-header">Contact</h4>
+                <hr class="left-line">
+                </div>
+
+                <br />
+
+                <div class="row content-left" placement="right"
+                    ngbPopover="Display map here" popoverTitle="Popover on right" style="padding-bottom: 5px">
+                    <div class="address">
+                        <p>Address: <br><p style="font-size: 12px;">3755 Sailboat Drive, Discovery Bay CA</p></p>
+                    </div>
+                </div>
+
+                <div class="row content-left">
+                <p>Phone: <br><p style="font-size: 12px;">(925) 481-4205</p></p>
+                </div>
+
+                <div class="row content-left" (click)="SendEmail()">
+                <p>Email: <br><p style="font-size: 12px;"><a href="{{mailText}}">mason.p.richardson@gmail.com</a></p></p>
+                </div>
+
+                <div class="row content-left">
+                <p>Linkedin: <br><p style="font-size: 12px;"><a href= "https://www.linkedin.com/in/mason-richardson-zerotek/" target="_blank">/mason-richardson-zerotek</a></p></p>
+                </div>
+
+
+                <!--Skills-->
+                <div class="row">
+                <h4 class="left-header">Skills</h4>
+                <hr class="left-line">
+                </div>
+
+                <br />
+
+                <div class="row content-left" *ngFor="let skill of skills">
+                    <span>{{skill}}</span><br />
+                </div>
+
+
+                <br />
+
+                <!--Languages-->
+                <div class="row">
+                <h4 class="left-header">Languages</h4>
+                <hr class="left-line">
+                </div>
+
+                <br />
+
+                
+                <div class="row">
+                    <div class="container content-left"> 
+                        <div style="float: left">
+                            <p class="languages">Javascript</p>   
+                        </div>
+                        <div class="progress-languages progress-moved" style="float: right">
+                            <div class="progress-bar javascript" ></div>                       
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="row">
+                <div class="container content-left"> 
+                    <div style="float: left">
+                        <p class="languages">C#</p>   
+                    </div>
+                    <div class="progress-languages progress-moved" style="float: right">
+                        <div class="progress-bar csharp" ></div>                       
+                    </div> 
+                </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="container content-left"> 
+                        <div style="float: left">
+                            <p class="languages">C++</p>   
+                        </div>
+                        <div class="progress-languages progress-moved" style="float: right">
+                            <div class="progress-bar cplus" ></div>                       
+                        </div> 
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="container content-left"> 
+                        <div style="float: left">
+                            <p class="languages">HTML/CSS</p>   
+                        </div>
+                        <div class="progress-languages progress-moved" style="float: right">
+                            <div class="progress-bar html" ></div>                       
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="container content-left"> 
+                        <div style="float: left">
+                            <p class="languages">Python</p>   
+                        </div>
+                        <div class="progress-languages progress-moved" style="float: right">
+                            <div class="progress-bar python" ></div>                       
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="container content-left"> 
+                        <div style="float: left">
+                            <p class="languages">Java</p>   
+                        </div>
+                        <div class="progress-languages progress-moved" style="float: right">
+                            <div class="progress-bar java" ></div>                       
+                        </div> 
+                    </div>
+                </div>
+            </div>
+
+            <!--RIGHT COLUMN-->
+            <div class="card-block px-2">
+                <div class="col-lg-12">
+                    <div class="row" class="content-right">
+                                        
+                        <h4 class="right-header"><i class="icon ion-md-person"></i>  About Me</h4>
+                        <hr class="right-line">
+
+                        <p class="card-text about-me">Driven and highly motivated, I have cultivated my skillset to allow me to have the ability to preform at a high level in a variety of positions. I have experience in everything from Android Development in Android Studio, and full stack web development and design on the MEAN Stack, to embedded development for microcontrollers.</p>
+                    
+                    </div>
+
+                    <div class="row" class="content-right">
+                                    
+                            <h4 class="right-header"><i class="icon ion-md-briefcase"></i>  Experiences</h4>
+                            <hr class="right-line">
+        
+                            <p class="card-text title">Octillion Power Systems</p>
+                    </div>
+
+                    </div>
+            </div>
+            </div>
+        </div>
+
 
 <router-outlet></router-outlet>
