@@ -1,223 +1,47 @@
 <div class="overlay">
-        <p class="screen">M</p>
-        <div class="intro">
-                <button class="myBtn" (click)="fadeOut()">ENTER</button>
-        </div>
+    <p class="screen">M</p>
+    <div class="intro">
+        <button class="myBtn" (click)="fadeOut()">ENTER</button>
     </div>
+</div>
 
-    <div class="overlay-2"></div>
+<div class="overlay-2"></div>
 
-        <div class="row content">
-        <div class="card flex-row flex-wrap">
+<div class="content">
 
-            <!--LEFT COLUMN-->
-            <div class="card-header border-0">
-                <img src="//placehold.it/220" alt="" style="margin-top: 20px">
-                <div class="row">
-                <h2 class="name">Mason <br> Richardson</h2>
-                </div>
-                <div class="row">
-                <h4 class="current-position"><i>Full Stack Engineer</i></h4>
-
-                </div>
-
-                <!--Contact Info-->
-                <div class="row">
-                <h4 class="left-header">Contact</h4>
-                <hr class="left-line">
-                </div>
-
-                <br />
-
-                <div class="row content-left" placement="right"
-                    ngbPopover="Display map here" popoverTitle="Popover on right" style="padding-bottom: 5px">
-                    <div class="address">
-                        <p>Address: <br><p style="font-size: 12px;">3755 Sailboat Drive, Discovery Bay CA</p></p>
-                    </div>
-                </div>
-
-                <div class="row content-left">
-                <p>Phone: <br><p style="font-size: 12px;">(925) 481-4205</p></p>
-                </div>
-
-                <div class="row content-left" (click)="SendEmail()">
-                <p>Email: <br><p style="font-size: 12px;"><a href="{{mailText}}">mason.p.richardson@gmail.com</a></p></p>
-                </div>
-
-                <div class="row content-left">
-                <p>Linkedin: <br><p style="font-size: 12px;"><a href= "https://www.linkedin.com/in/mason-richardson-zerotek/" target="_blank">/mason-richardson-zerotek</a></p></p>
-                </div>
-
-
-                <!--Skills-->
-                <div class="row">
-                <h4 class="left-header">Skills</h4>
-                <hr class="left-line">
-                </div>
-
-                <br />
-
-                <div class="row content-left" *ngFor="let skill of skills">
-                    <span class="skills">{{skill}}</span><br />
-                </div>
-
-
-                <br />
-
-                <!--Languages-->
-                <div class="row">
-                <h4 class="left-header">Languages</h4>
-                <hr class="left-line">
-                </div>
-
-                <br />
-
-                
-                <div class="row">
-                    <div class="container content-left"> 
-                        <div style="float: left">
-                            <p class="languages">Javascript</p>   
-                        </div>
-                        <div class="progress-languages progress-moved" style="float: right">
-                            <div class="progress-bar javascript" ></div>                       
-                        </div> 
-                    </div>
-                </div>
-
-                <div class="row">
-                <div class="container content-left"> 
-                    <div style="float: left">
-                        <p class="languages">C#</p>   
-                    </div>
-                    <div class="progress-languages progress-moved" style="float: right">
-                        <div class="progress-bar csharp" ></div>                       
-                    </div> 
-                </div>
-                </div>
-
-
-                <div class="row">
-                    <div class="container content-left"> 
-                        <div style="float: left">
-                            <p class="languages">C++</p>   
-                        </div>
-                        <div class="progress-languages progress-moved" style="float: right">
-                            <div class="progress-bar cplus" ></div>                       
-                        </div> 
-                    </div>
-                </div>
-
-
-                <div class="row">
-                    <div class="container content-left"> 
-                        <div style="float: left">
-                            <p class="languages">HTML/CSS</p>   
-                        </div>
-                        <div class="progress-languages progress-moved" style="float: right">
-                            <div class="progress-bar html" ></div>                       
-                        </div> 
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="container content-left"> 
-                        <div style="float: left">
-                            <p class="languages">Python</p>   
-                        </div>
-                        <div class="progress-languages progress-moved" style="float: right">
-                            <div class="progress-bar python" ></div>                       
-                        </div> 
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="container content-left"> 
-                        <div style="float: left">
-                            <p class="languages">Java</p>   
-                        </div>
-                        <div class="progress-languages progress-moved" style="float: right">
-                            <div class="progress-bar java" ></div>                       
-                        </div> 
-                    </div>
-                </div>
-            </div>
-
-            <!--RIGHT COLUMN-->
-            <div class="card-block px-2">
-                <div class="col-lg-12">
-                    <div class="row" class="content-right">
-                                        
-                        <h4 class="right-header"><i class="icon ion-md-person"></i>  About Me</h4>
-                        <hr class="right-line">
-
-                        <p class="card-text about-me">Driven and highly motivated, I have cultivated my skillset to allow me to have the ability to preform at a high level in a variety of positions. I have experience in everything from Android Development in Android Studio, to full stack web development and design using Angular, Express.js and Node.js on a Linux server. 
-                            <br />
-                            <br />
-                            I have a foundation in object-oriented programming and design patters, and a passion to expand my knowledge to create applications with a true impact.</p>
-                    
-                    </div>
-
-                    <div class="row" class="content-right">
-                                    
-                            <h4 class="right-header"><i class="icon ion-md-briefcase"></i>  Experiences</h4>
-                            <hr class="right-line">
-        
-                            <p class="card-text title">Octillion Power Systems</p>
-                            <p class="location"><i class="icon ion-md-pin locale"></i> Hayward, CA </p>
-                            <p class="position"> Full Stack Engineer </p>
-
-                            <p class="position-description">Leading Development on a customer facing cloud platform to track, diagnose, and predict future issues of battery packs for India’s largest electrically powered public transportation fleet. Using the MEAN stack with REST api. 
-                                <br /><br />
-                                A Linux server hosted on Digital Ocean is set up for a combination of real-time upload of over 200 thousand  datapoints per minute, and uploading large JSON data files of over 5 milion datapoints. Then from raw hex CANBus data it is parsed into a readable format, saved to a database and displayed in a nicely designed and elegant user interface.
-                                <br /><br />
-                                Simulatenously working on diagnostic applications using .NET and C# as well as lending a hand to embedded engineers by working on a UDS protocol bootloader to interface with off the shelf CANbus tools.
-                            </p>
-
-
-                            <br />
-
-                            <p class="card-text title">Prosoft Engineering</p>
-                            <p class="location"><i class="icon ion-md-pin locale"></i> Livermore, CA </p>
-                            <p class="position"> Software Engineer </p>
-
-                            <p class="position-description">
-                                Assisting on development of  a cross platform application, “Data Backup”, using Java and C++. Working on UI visual issues and improving design where needed. Developing test routines for bugs and adding further functionality within the software such as scheduled backups and connection to database to track what within the software is being used for better design practices. 
-                            </p>
-
-                            <br />
-
-                            <p class="card-text title">The Solar Company</p>
-                            <p class="location"><i class="icon ion-md-pin locale"></i> Tracy, CA </p>
-                            <p class="position"> Information Systems Manager </p>
-
-                            <p class="position-description">
-                                Leading the IT department, improving efficiency and reducing costs. Administer Active directory, manage VMWare Environment, maintain company servers, Web/Mobile development for internal CRM, and improving database efficiency and apply daily backups.
-                            </p>
-
-                            <br />
-                            <p class="position"> Information Systems Analyst </p>
-
-                            <p class="position-description">
-                                Assisting on development of  a cross platform application called “Data B ackup”, using Java and C++. Working on UI visual issues and improving design as well as testing for bugs and adding further functionality. Building tests for all features of the software.
-                            </p>
-                    </div>
-
-                    <div class="row" class="content-right">
-                                    
-                        <h4 class="right-header"><i class="icon ion-md-school"></i>  Education</h4>
-                        <hr class="right-line">
-    
-                        <p class="card-text title">ITT Technical Institute</p>
-                        <p style="color: #9e9d9d; font-style: italic; font-family: 'Lato'; margin-left: 30px; margin-top: -15px"><i class="icon ion-md-pin locale"></i> Concord, CA </p>
-                        <p style="color: #595959; font-style: italic; font-weight: bold; font-family: 'Lato'; margin-left: 42px; margin-top: -20px"> Associates Degree / Software Development </p>
-                    </div>
-
-                    <br />
-                    <br />
-                    </div>
-            </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">Mason Richardson</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#team">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
+
+</div>
 
 
 <router-outlet></router-outlet>

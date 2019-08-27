@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ResumeComponent } from './resume/resume.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    ResumeComponent,
     
     //ExampleDialogComponent //DialogOverviewExampleDialog
   ],

@@ -10,7 +10,7 @@ export interface DialogData {
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
 
@@ -96,7 +96,7 @@ export class AppComponent {
         });
 
         setTimeout(function () {
-            var element = document.getElementById("body");
+            var element = document.getElementById("page-top");
             element.classList.remove("no-scroll");
         }, 3500);
     }

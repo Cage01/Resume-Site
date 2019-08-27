@@ -23,15 +23,15 @@
               "src/assets"
             ],
             "styles": [
-                "node_modules/ionicons/dist/css/ionicons.min.css",
-                "node_modules/bootstrap/dist/css/bootstrap.min.css",
-                "src/styles.css"
+              "node_modules/ionicons/dist/css/ionicons.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.scss"
             ],
             "scripts": [
-                "node_modules/jquery/dist/jquery.min.js",
-                "node_modules/popper.js/dist/umd/popper.min.js",
-                "node_modules/bootstrap/dist/js/bootstrap.min.js",
-                "node_modules/ionicons/dist/ionicons.js"
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/ionicons/dist/ionicons.js"
             ]
           },
           "configurations": {
@@ -95,11 +95,11 @@
               "src/assets"
             ],
             "styles": [
-                "src/styles.css"
+              "src/styles.css"
             ],
             "scripts": [
-                "node_modules/jquery/dist/jquery.min.js",
-                "node_modules/popper.js/dist/umd/popper.min.js"
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js"
             ]
           }
         },
@@ -129,6 +129,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "resume-site"
+    }
+  },
+  "defaultProject": "resume-site",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
