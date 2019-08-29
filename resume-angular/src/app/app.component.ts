@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import {TweenMax, Expo, Power2} from "gsap/TweenMax";
+import { Power4, Power1 } from 'gsap';
 
 export interface DialogData {
     animal: string;
@@ -76,9 +77,9 @@ export class AppComponent {
         });
 
         TweenMax.to(".overlay-2", 2.2, {
-            delay: 3,
+            delay: 3.25,
             top: "-110%",
-            ease: Power2.easeInOut,
+            ease: Power1.easeInOut,
         });
 
         TweenMax.from(".content", 2, {
@@ -98,7 +99,10 @@ export class AppComponent {
         setTimeout(function () {
             var element = document.getElementById("page-top");
             element.classList.remove("no-scroll");
-        }, 3500);
+
+            var nav = document.getElementById("mainNav");
+            nav.classList.add("add-navbar-shadow");
+        }, 5200);
     }
 
 
