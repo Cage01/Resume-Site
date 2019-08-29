@@ -1,3 +1,5 @@
+@import "src/fonts.scss";
+
 /* You can add global styles to this file, and also import other style files */
 body {
     background-color: #4a4a4a;
@@ -12,7 +14,7 @@ body {
     background: #141E30;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    z-index: 1;
+    z-index: 4;
 }
 
 .add-navbar-shadow {
@@ -62,7 +64,7 @@ body {
     margin: 0 auto;
     margin-top: 10px;
     text-align: center;
-    font-family: "neo-latina";
+    @include neo-latina
 }
 
 .icon {
@@ -77,13 +79,13 @@ body {
 
 
 .right-header {
-    font-family: "Moonglade";
+    @include Moonglade;
     color: #555555;
     font-weight: 400;
 }
 
 .left-header {
-    font-family: "Moonglade";
+    @include Moonglade;
     padding-top: 40px;
     margin: 0 auto;
     text-align: center;
@@ -114,18 +116,18 @@ body {
 }
 
 .content-left p, .skills {
-    font-family: "Lato";
+    @include Lato;
 }
 
 .content-left a {
-    font-family: "Lato";
+    @include Lato;
     text-decoration: underline;
     color: #f2f2f2
 }
 
 .experience {
     margin-left: 30px;
-    font-family: "Lato";
+    @include Lato;
 }
 
 .location {
@@ -155,7 +157,7 @@ body {
 .content-right .title {
     font-weight: bold;
     color: #626262fa;
-    font-family: "Lato";
+    @include Lato;
     font-size: 16px;
     margin-top: 10px;
     margin-left: 30px;
@@ -190,7 +192,7 @@ body {
     font-size: 22.8px;
     margin-top: 5px;
     text-align: center;
-    font-family: "neo-latina";
+    @include neo-latina;
 }
 
 .about-me {
@@ -198,26 +200,6 @@ body {
     color: #555555;
 }
 
-
-@font-face {
-    font-family: "neo-latina";
-    src: url(assets/fonts/neo-latina.ttf) format('truetype');
-}
-
-@font-face {
-    font-family: "Lato";
-    src: url(assets/fonts/Lato.ttf) format('truetype');
-}
-
-@font-face {
-    font-family: "Moonglade";
-    src: url(assets/fonts/Moonglade.ttf) format('truetype');
-}
-
-@font-face {
-    font-family: "Blackhole";
-    src: url(assets/fonts/BlackHoleBB.ttf) format('truetype');
-}
 
 
 
@@ -235,7 +217,7 @@ html, body {
 }
 
 body {
-    font-family: "neo-latina";
+    @include neo-latina;
 }
 
 .no-scroll{
@@ -244,13 +226,13 @@ body {
 
 .content {
     margin: 0 auto;
-    z-index: 1;
+    z-index: 3;
     transform: translate(0, -50%);
 }
 
 
 .overlay-2 {
-    z-index: 1;
+    z-index: 4;
     position: absolute;
     width: 100%;
     height: 100vh;
@@ -260,7 +242,7 @@ body {
 }
 
 .overlay {
-    z-index: 2;
+    z-index: 5;
     position: absolute;
     width: 100%;
     height: 100vh;
@@ -276,7 +258,7 @@ body {
 
 .screen {
     color: #323232;
-    font-family: "Blackhole";
+    @include Blackhole;
     position: absolute;
     top: 15%;
     left: 50%;
@@ -289,7 +271,7 @@ body {
 }
 
 .myBtn {
-    font-family: "neo-latina";
+    @include neo-latina;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -299,7 +281,7 @@ body {
 button {
     display: block;
     padding: 24px 48px;
-    font-family: "neo-latina";
+    @include neo-latina;
     font-weight: 700;
     font-size: 12px;
     letter-spacing: 6px;

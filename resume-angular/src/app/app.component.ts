@@ -91,7 +91,7 @@ export class AppComponent {
 
         TweenMax.to(".content", 2, {
             opacity: 1,
-            y: 300,
+            y: 40,
             delay: 3.2,
             ease: Power2.easeInOut
         });
@@ -102,7 +102,7 @@ export class AppComponent {
 
             var nav = document.getElementById("mainNav");
             nav.classList.add("add-navbar-shadow");
-        }, 5200);
+        }, 4690);
     }
 
 
