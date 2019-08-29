@@ -75,10 +75,10 @@ export class AppComponent {
             ease: Expo.easeInOut
         });
 
-        TweenMax.to(".overlay-2", 2, {
+        TweenMax.to(".overlay-2", 2.2, {
             delay: 3,
             top: "-110%",
-            ease: Expo.easeInOut
+            ease: Power2.easeInOut,
         });
 
         TweenMax.from(".content", 2, {
@@ -90,7 +90,7 @@ export class AppComponent {
 
         TweenMax.to(".content", 2, {
             opacity: 1,
-            y: 0,
+            y: 300,
             delay: 3.2,
             ease: Power2.easeInOut
         });

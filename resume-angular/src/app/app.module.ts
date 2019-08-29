@@ -6,12 +6,14 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ResumeComponent } from './resume/resume.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ResumeComponent,
+    LandingPageComponent,
     
     //ExampleDialogComponent //DialogOverviewExampleDialog
   ],
@@ -26,6 +28,7 @@ import { ResumeComponent } from './resume/resume.component';
   bootstrap: [AppComponent],
 
   entryComponents: [
+    LandingPageComponent
     //DialogOverviewExampleDialog
   ],
 })
