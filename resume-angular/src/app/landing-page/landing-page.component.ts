@@ -10,16 +10,19 @@ export class LandingPageComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
+        var prevSTP = 0;
+
         /* because me lazy */
         Object.getOwnPropertyNames(Math).map(function (p) {
             window[p] = Math[p];
         });
 
-        var HEX_CRAD = 32,
+        
+        var HEX_CRAD = 28,
             HEX_BG = '#171717',
             HEX_HL = '#2a2a2a',
             HEX_HLW = 2,
-            HEX_GAP = 4,
+            HEX_GAP = 2,
             NEON_PALETE = [
                 '#cb3301', '#ff0066',
                 '#ff6666', '#feff99',
@@ -130,7 +133,11 @@ export class LandingPageComponent implements OnInit {
             };
 
             this.draw = function (ct) {
-                ct.fillStyle = HEX_BG;
+                var gradient = ct.createLinearGradient(0,100,0,350);
+                gradient.addColorStop(0, '#26282a');
+                gradient.addColorStop(1, '#101010');
+
+                ct.fillStyle = gradient;
                 ct.beginPath();
 
                 for (var i = 0; i < this.n; i++) {
@@ -182,6 +189,7 @@ export class LandingPageComponent implements OnInit {
         };
 
         var neon = function () {
+
             var k = (t % T_SWITCH) * f,
                 rgb = {
                     'r': ~~(wp[csi].r * (1 - k) +
@@ -192,15 +200,33 @@ export class LandingPageComponent implements OnInit {
                         wp[(csi + 1) % nwp].b * k)
                 },
                 rgb_str = 'rgb(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ')',
+
                 light = ctx[0].createRadialGradient(
                     ~~(w / 2), ~~(h / 2) - 10, 0,
                     ~~(w / 2), ~~(h / 2) - 10, .875 * _min
                 ), stp;
 
-            //console.log(_min);
             //stp = .5 - .5 * Math.sin(7 * t * f) * Math.cos(5 * t * f) * Math.sin(3 * t * f);
-            stp = 0.5106032176763833 //maybe grow slowly to a certain point
-            //0.5106032176763833
+
+            //Grow neon on hover of M logo
+            if ($('#logo:hover').length != 0) {
+                if(prevSTP == 0) {
+                    stp = 0.3106032176763833; //maybe grow slowly to a certain point
+                    prevSTP = stp;
+                }else {
+                    if(prevSTP < 0.61){
+                        stp = prevSTP + 0.00028; //hopefully grows slowly
+                        prevSTP = stp;
+                    }else{
+                        stp = 0.61
+                    }
+                }
+            }else {
+                stp = 0.3106032176763833;
+                prevSTP = 0;
+            }
+
+            
             light.addColorStop(0, rgb_str);
             light.addColorStop(stp, 'rgba(0,0,0,.03)');
 
