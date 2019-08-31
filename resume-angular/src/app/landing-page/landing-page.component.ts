@@ -133,6 +133,7 @@ export class LandingPageComponent implements OnInit {
             };
 
             this.draw = function (ct) {
+                //Hex Background color
                 var gradient = ct.createLinearGradient(0,100,0,350);
                 gradient.addColorStop(0, '#26282a');
                 gradient.addColorStop(1, '#101010');
@@ -179,6 +180,7 @@ export class LandingPageComponent implements OnInit {
             }
 
             grid = new Grid(rows, cols);
+            
             grid.draw(ctx[1]);
 
             if (!source) {
@@ -211,11 +213,11 @@ export class LandingPageComponent implements OnInit {
             //Grow neon on hover of M logo
             if ($('#logo:hover').length != 0) {
                 if(prevSTP == 0) {
-                    stp = 0.3106032176763833; //maybe grow slowly to a certain point
+                    stp = 0.3106032176763833; //Neon starting point
                     prevSTP = stp;
                 }else {
                     if(prevSTP < 0.61){
-                        stp = prevSTP + 0.00028; //hopefully grows slowly
+                        stp = prevSTP + 0.00028; //Grows slowly until a threshold
                         prevSTP = stp;
                     }else{
                         stp = 0.61

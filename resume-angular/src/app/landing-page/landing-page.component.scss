@@ -58,6 +58,12 @@ $shadowColour: rgba(0, 0, 0, 0.6);
   text-shadow: 4px 3px 15px #000000;
   transform: translatey(0px);
 
+  cursor: crosshair;
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+
   transition-duration: $defaultDuration;
   transition-property: transform;
 
