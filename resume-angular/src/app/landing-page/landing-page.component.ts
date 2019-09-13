@@ -213,18 +213,18 @@ export class LandingPageComponent implements OnInit {
             //Grow neon on hover of M logo
             if ($('#logo:hover').length != 0) {
                 if(prevSTP == 0) {
-                    stp = 0.3106032176763833; //Neon starting point
+                    stp = 0.61; //Neon starting point
                     prevSTP = stp;
                 }else {
-                    if(prevSTP < 0.61){
+                    if(prevSTP < 0.81){
                         stp = prevSTP + 0.00028; //Grows slowly until a threshold
                         prevSTP = stp;
                     }else{
-                        stp = 0.61
+                        stp = 0.81
                     }
                 }
             }else {
-                stp = 0.3106032176763833;
+                stp = 0.61;
                 prevSTP = 0;
             }
 
