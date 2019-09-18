@@ -1,269 +1,289 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
+import { Chart } from 'chart.js';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
+
+declare let window: any
 
 @Component({
     selector: 'landing-page',
     templateUrl: './landing-page.component.html',
     styleUrls: ['./landing-page.component.scss']
 })
+
 export class LandingPageComponent implements OnInit {
 
-    constructor() { }
+    constructor() {}
 
     ngOnInit() {
-        var prevSTP = 0;
 
-        /* because me lazy */
-        Object.getOwnPropertyNames(Math).map(function (p) {
-            window[p] = Math[p];
-        });
 
-        
-        var HEX_CRAD = 28,
-            HEX_BG = '#171717',
-            HEX_HL = '#2a2a2a',
-            HEX_HLW = 2,
-            HEX_GAP = 2,
-            NEON_PALETE = [
-                '#cb3301', '#ff0066',
-                '#ff6666', '#feff99',
-                '#ffff67', '#ccff66',
-                '#99fe00', '#fe99ff',
-                '#ff99cb', '#fe349a',
-                '#cc99fe', '#6599ff',
-                '#00ccff', '#ffffff'
-            ],
-            T_SWITCH = 64,
+        //Init Charts
+        this.init_leftChart();
+        this.init_rightChart();
+        this.init_skillRadarChart();
 
-            unit_x = 3 * HEX_CRAD + HEX_GAP * Math.sqrt(3),
-            unit_y = HEX_CRAD * Math.sqrt(3) * .5 + .5 * HEX_GAP,
-            off_x = 1.5 * HEX_CRAD + HEX_GAP * Math.sqrt(3) * .5,
 
-            /* extract a work palette */
-            wp = NEON_PALETE.map(function (c) {
-                var num = parseInt(c.replace('#', ''), 16);
-
-                return {
-                    'r': num >> 16 & 0xFF,
-                    'g': num >> 8 & 0xFF,
-                    'b': num & 0xFF
-                };
-            }),
-            nwp = wp.length, csi = 0,
-
-            f = 1 / T_SWITCH,
-
-            c = document.querySelectorAll('canvas'),
-            n = c.length, w, h, _min,
-            ctx = [],
-            grid, source = null,
-            t = 0, request_id = null;
-
-        var GridItem = function (x, y) {
-            this.x = x || 0;
-            this.y = y || 0;
-            this.points = { 'hex': [], 'hl': [] };
-
-            this.init = function () {
-                var x, y, a, ba = Math.PI / 3,
-                    ri = HEX_CRAD - .5 * HEX_HLW;
-
-                for (var i = 0; i < 6; i++) {
-                    a = i * ba;
-                    x = this.x + HEX_CRAD * Math.cos(a);
-                    y = this.y + HEX_CRAD * Math.sin(a);
-
-                    this.points.hex.push({
-                        'x': x,
-                        'y': y
-                    });
-
-                    if (i > 2) {
-                        x = this.x + ri * Math.cos(a);
-                        y = this.y + ri * Math.sin(a);
-
-                        this.points.hl.push({
-                            'x': x,
-                            'y': y
-                        });
-                    }
-                }
-            };
-
-            this.draw = function (ct) {
-                for (var i = 0; i < 6; i++) {
-                    ct[(i === 0 ? 'move' : 'line') + 'To'](
-                        this.points.hex[i].x,
-                        this.points.hex[i].y
-                    );
-                }
-            };
-
-            this.highlight = function (ct) {
-                for (var i = 0; i < 3; i++) {
-                    ct[(i === 0 ? 'move' : 'line') + 'To'](
-                        this.points.hl[i].x,
-                        this.points.hl[i].y
-                    );
-                }
-            };
-
-            this.init();
-        };
-
-        var Grid = function (rows, cols) {
-            this.cols = cols || 16;
-            this.rows = rows || 16;
-            this.items = [];
-            this.n = this.items.length;
-
-            this.init = function () {
-                var x, y;
-
-                for (var row = 0; row < this.rows; row++) {
-                    y = row * unit_y;
-
-                    for (var col = 0; col < this.cols; col++) {
-                        x = ((row % 2 == 0) ? 0 : off_x) + col * unit_x;
-
-                        this.items.push(new GridItem(x, y));
-                    }
-                }
-
-                this.n = this.items.length;
-            };
-
-            this.draw = function (ct) {
-                //Hex Background color
-                var gradient = ct.createLinearGradient(0,100,0,350);
-                gradient.addColorStop(0, '#26282a');
-                gradient.addColorStop(1, '#101010');
-
-                ct.fillStyle = gradient;
-                ct.beginPath();
-
-                for (var i = 0; i < this.n; i++) {
-                    this.items[i].draw(ct);
-                }
-
-                ct.closePath();
-                ct.fill();
-
-                ct.strokeStyle = HEX_HL;
-                ct.beginPath();
-
-                for (var i = 0; i < this.n; i++) {
-                    this.items[i].highlight(ct);
-                }
-
-                ct.closePath();
-                ct.stroke();
-            };
-
-            this.init();
-        };
-
-        var init = function () {
-            var s = getComputedStyle(c[0]),
-                rows, cols;
-
-            w = ~~s.width.split('px')[0];
-            h = ~~s.height.split('px')[0];
-            _min = .75 * Math.min(w, h);
-
-            rows = ~~(h / unit_y) + 2;
-            cols = ~~(w / unit_x) + 2;
-
-            for (var i = 0; i < n; i++) {
-                c[i].width = w;
-                c[i].height = h;
-                ctx[i] = c[i].getContext('2d');
-            }
-
-            grid = new Grid(rows, cols);
-            
-            grid.draw(ctx[1]);
-
-            if (!source) {
-                source = { 'x': ~~(w / 2), 'y': ~~(h / 2) };
-            }
-
-            neon();
-        };
-
-        var neon = function () {
-
-            var k = (t % T_SWITCH) * f,
-                rgb = {
-                    'r': ~~(wp[csi].r * (1 - k) +
-                        wp[(csi + 1) % nwp].r * k),
-                    'g': ~~(wp[csi].g * (1 - k) +
-                        wp[(csi + 1) % nwp].g * k),
-                    'b': ~~(wp[csi].b * (1 - k) +
-                        wp[(csi + 1) % nwp].b * k)
-                },
-                rgb_str = 'rgb(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ')',
-
-                light = ctx[0].createRadialGradient(
-                    ~~(w / 2), ~~(h / 2) - 10, 0,
-                    ~~(w / 2), ~~(h / 2) - 10, .875 * _min
-                ), stp;
-
-            //stp = .5 - .5 * Math.sin(7 * t * f) * Math.cos(5 * t * f) * Math.sin(3 * t * f);
-
-            //Grow neon on hover of M logo
-            if ($('#logo:hover').length != 0) {
-                if(prevSTP == 0) {
-                    stp = 0.61; //Neon starting point
-                    prevSTP = stp;
-                }else {
-                    if(prevSTP < 0.81){
-                        stp = prevSTP + 0.00028; //Grows slowly until a threshold
-                        prevSTP = stp;
-                    }else{
-                        stp = 0.81
-                    }
-                }
-            }else {
-                stp = 0.61;
-                prevSTP = 0;
-            }
-
-            
-            light.addColorStop(0, rgb_str);
-            light.addColorStop(stp, 'rgba(0,0,0,.03)');
-
-            fillBackground('rgba(0,0,0,.02)');
-            fillBackground(light);
-
-            t++;
-
-            if (t % T_SWITCH === 0) {
-                csi++;
-
-                if (csi === nwp) {
-                    csi = 0;
-                    t = 0;
-                }
-            }
-
-            request_id = requestAnimationFrame(neon);
-        };
-
-        var fillBackground = function (bg_fill) {
-            ctx[0].fillStyle = bg_fill;
-            ctx[0].beginPath();
-            ctx[0].rect(0, 0, w, h);
-            ctx[0].closePath();
-            ctx[0].fill();
-        };
-
-        init();
-
-        //addEventListener('resize', init, false);
-
-        addEventListener('mousemove', function (e) {
-            source = { 'x': e.clientX, 'y': e.clientY };
-        }, false);
     }
 
+    icon(iconID) {
+        switch (iconID) {
+            case 0:
+                window.open("https://www.linkedin.com/in/mason-richardson-zerotek/", "_blank");
+                break;
+            case 1:
+                window.open("https://github.com/Cage01", "_blank");
+                break;
+            case 2:
+                var mailText = "mailto:mason.p.richardson@gmail.com+?subject=I saw your website!"; // add the links to body
+                window.location.href = mailText;
+                break;
+            case 3:
+                break;
+            default:
+                break;
+        }
+    }
+
+
+    init_skillRadarChart() {
+        var canvas: any = document.getElementById("canvas");
+
+        var gradientBlue = canvas.getContext('2d').createLinearGradient(0, 0, 0, 150);
+        gradientBlue.addColorStop(0, 'rgba(44, 108, 140, 0.4)'); //Dont like this color for the radar chart
+        gradientBlue.addColorStop(1, 'rgba(44, 108, 140, 0.5)');
+
+        var gradientHoverBlue = canvas.getContext('2d').createLinearGradient(0, 0, 0, 150);
+        gradientHoverBlue.addColorStop(0, 'rgba(65, 65, 255, 1)');
+        gradientHoverBlue.addColorStop(1, 'rgba(131, 125, 255, 1)');
+
+
+        var redArea = null;
+        var blueArea = null;
+
+        var shadowed = {
+            beforeDatasetsDraw: function (chart, options) {
+                chart.ctx.shadowColor = 'rgba(0, 0, 0, 0.25)';
+                chart.ctx.shadowBlur = 40;
+            },
+            afterDatasetsDraw: function (chart, options) {
+                chart.ctx.shadowColor = 'rgba(0, 0, 0, 0)';
+                chart.ctx.shadowBlur = 0;
+            }
+        };
+
+
+        window.chart = new Chart(document.getElementById("canvas"), {
+            type: "radar",
+            data: {
+                labels: ["Design", "Algorithms", "Front-End", "Back-End", "Databases", "Data Structures"],
+                datasets: [{
+                    data: [100, 65, 90, 100, 80, 70],
+                    fill: true,
+                    backgroundColor: gradientBlue,
+                    borderColor: "transparent",
+                    pointBackgroundColor: "transparent",
+                    pointBorderColor: "transparent",
+                    pointHoverBackgroundColor: "transparent",
+                    pointHoverBorderColor: "transparent",
+                    pointHitRadius: 50,
+                }]
+            },
+            options: {
+                legend: {
+                    display: false,
+                },
+                tooltips: {
+                    enabled: false,
+                    custom: function (tooltip) {
+                        var tooltipEl = document.getElementById('tooltip');
+                        if (tooltip.body) {
+                            tooltipEl.style.display = 'block';
+                            if (tooltip.body[0].lines && tooltip.body[0].lines[0]) {
+                                tooltipEl.innerHTML = tooltip.body[0].lines[0];
+                            }
+                        } else {
+                            setTimeout(function () {
+                                tooltipEl.style.display = 'none';
+                            }, 500);
+                        }
+                    },
+                },
+                gridLines: {
+                    display: true,
+                    color: "#FFFFF"
+                },
+                scale: {
+                    pointLabels: {
+                        fontSize: 12
+                    },
+                    ticks: {
+                        maxTicksLimit: 1,
+                        display: false,
+                    },
+                    angleLines: {
+                        color: '#777777'
+                    },
+                    gridLines: {
+                        color: '#858585'
+                    }
+                }
+            },
+            plugins: [shadowed]
+        });
+    }
+
+    init_leftChart() {
+        //Set Context
+        var chart: any = document.getElementById("chart-left");
+        var ctx = chart.getContext("2d"), gradient = ctx.createLinearGradient(0, 0, 0, 450);
+
+        //Gradient
+        gradient.addColorStop(0, 'rgba(44, 108, 140, 0.5)');
+        gradient.addColorStop(0.5, 'rgba(36, 59, 85, 0.25)');
+        gradient.addColorStop(1, 'rgba(36, 59, 85, 0)');
+
+        var options = {
+            responsive: true,
+            maintainAspectRatio: true,
+            animation: {
+                easing: 'easeInOutQuad',
+                duration: 520
+            },
+            scales: {
+                xAxes: [{
+                    gridLines: {
+                        color: 'rgba(200, 200, 200, 0.05)',
+                        lineWidth: 1
+                    }
+                }],
+                yAxes: [{
+                    gridLines: {
+                        color: 'rgba(200, 200, 200, 0.08)',
+                        lineWidth: 1
+                    }
+                }]
+            },
+            elements: {
+                line: {
+                    tension: 0.4
+                }
+            },
+            legend: {
+                display: false
+            },
+            point: {
+                backgroundColor: 'white'
+            },
+            tooltips: {
+                titleFontFamily: 'Lato',
+                backgroundColor: 'rgba(0,0,0,0.3)',
+                titleFontColor: 'red',
+                caretSize: 5,
+                cornerRadius: 2,
+                xPadding: 10,
+                yPadding: 10
+            }
+        };
+
+        //Set Data
+        var data = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+            datasets: [{
+                label: 'Custom Label Name',
+                backgroundColor: gradient,
+                pointBackgroundColor: 'white',
+                borderWidth: 1,
+                borderColor: '#243b55',
+                data: [50, 55, 80, 81, 54, 50]
+            }]
+        };
+
+        //Init Chart
+        new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: options
+        });
+    }
+
+    init_rightChart() {
+        //Set Context
+        var chart: any = document.getElementById("chart-right");
+        var ctx = chart.getContext("2d"), gradient = ctx.createLinearGradient(0, 0, 0, 450);
+
+        //Gradient
+        gradient.addColorStop(0, 'rgba(44, 108, 140, 0.5)');
+        gradient.addColorStop(0.5, 'rgba(36, 59, 85, 0.25)');
+        gradient.addColorStop(1, 'rgba(36, 59, 85, 0)');
+
+        //Chart Options
+        var options = {
+            responsive: true,
+            maintainAspectRatio: true,
+            animation: {
+                easing: 'easeInOutQuad',
+                duration: 520
+            },
+            scales: {
+                xAxes: [{
+                    gridLines: {
+                        color: 'rgba(200, 200, 200, 0.05)',
+                        lineWidth: 1
+                    }
+                }],
+                yAxes: [{
+                    gridLines: {
+                        color: 'rgba(200, 200, 200, 0.08)',
+                        lineWidth: 1
+                    }
+                }]
+            },
+            elements: {
+                line: {
+                    tension: 0.4
+                }
+            },
+            legend: {
+                display: false
+            },
+            point: {
+                backgroundColor: 'white'
+            },
+            tooltips: {
+                titleFontFamily: 'Lato',
+                backgroundColor: 'rgba(0,0,0,0.3)',
+                titleFontColor: 'red',
+                caretSize: 5,
+                cornerRadius: 2,
+                xPadding: 10,
+                yPadding: 10
+            }
+        };
+
+
+        //Set Data
+        var data = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+            datasets: [{
+                label: 'Custom Label Name',
+                backgroundColor: gradient,
+                pointBackgroundColor: 'white',
+                borderWidth: 1,
+                borderColor: '#243b55',
+                data: [50, 80, 65, 55, 54, 70]
+            }]
+        };
+
+        //Init Chart
+        new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: options
+        });
+
+    }
+
+
 }
+
+

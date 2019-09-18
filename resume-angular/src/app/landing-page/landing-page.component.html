@@ -1,31 +1,48 @@
 <!-- Header -->
 <header class="masthead">
-    <div class="container">
-        <div class="intro-text" style="height: 700px">
+    <div class="img-overlay">
+        <div class="container">
+            <div class="intro-text">
 
+                <h1 id="logo" class="header-logo">M</h1>
+            </div>
         </div>
     </div>
 </header>
 
 
-
-
-<section class="ribbon">
-    <div class="container" style="height: 400px">
-        <div class="intro-text">
-
-            <h1 id="logo" class="header-logo" style="margin: 0 auto; text-align: center; line-height: 0.8">M</h1>
-        </div>
-    </div>
-</section>
-
 <!-- Services -->
-<section class="page-section" id="services">
+<section class="page-section" id="stats">
     <div class="container">
         <div class="row">
+            <div class="center-chart">
+
+
+                <div class="line-chart" style="margin-right: 50px">
+                    <div class="aspect-ratio">
+                        <canvas id="chart-left"></canvas>
+                    </div>
+                </div>
+
+                <div class="line-chart" style="margin-left: 50px">
+                    <div class="aspect-ratio">
+                        <canvas id="chart-right"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+
+        <div class="row" id="services">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading text-uppercase">Services</h2>
-                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                <h2 class="section-heading text-uppercase">About Me</h2>
+                <h3 class="section-subheading text-muted">I am a passionate and dedicated Full Stack Engineer based in
+                    the Bay Area, CA, specializing in building efficient scalable code for back end infrastructures and
+                    to design elegant user interfaces. </h3>
             </div>
         </div>
         <div class="row text-center">
@@ -34,7 +51,7 @@
                     <i class="fas fa-circle fa-stack-2x text-primary"></i>
                     <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
                 </span>
-                <h4 class="service-heading">E-Commerce</h4>
+                <h4 class="service-heading">Front-end & UI Design</h4>
                 <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
                     architecto quo inventore harum ex magni, dicta impedit.</p>
             </div>
@@ -43,7 +60,7 @@
                     <i class="fas fa-circle fa-stack-2x text-primary"></i>
                     <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
                 </span>
-                <h4 class="service-heading">Responsive Design</h4>
+                <h4 class="service-heading">Back-end & Infrastructure</h4>
                 <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
                     architecto quo inventore harum ex magni, dicta impedit.</p>
             </div>
@@ -52,10 +69,145 @@
                     <i class="fas fa-circle fa-stack-2x text-primary"></i>
                     <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
                 </span>
-                <h4 class="service-heading">Web Security</h4>
+                <h4 class="service-heading">Database Development</h4>
                 <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
                     architecto quo inventore harum ex magni, dicta impedit.</p>
             </div>
         </div>
+
+        <br />
+        <br />
+
+        <div class="row">
+            <!-- Canvas for Chart.js -->
+            <canvas id="canvas" style="max-width: 500px; margin: 0 auto" max-width="10" height="auto"></canvas>
+        </div>
+
+        <br />
+        <br />
+
+
+        <div class="row">
+            <div class="col-lg-12 text-center" style="text-align: left">
+                <h2 class="section-heading text-uppercase">Where I've Worked</h2>
+
+
+                
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="0">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="col-lg-6" style="display: inline-block">
+                                <p style="text-align: left;">Full Stack Engineer <a href="https://www.octillion.us/"
+                                        target="_blank"><br />@Octillion Power Systems</a></p>
+                                <p class="text-muted" style="display: inline-block; text-align: left;">I lead
+                                    development on a customer facing web application designed to track vehicles and
+                                    diagnose issues of our battery packs for India's largest electric public
+                                    transportation business. Created on the MEAN stack with the RESTful API using
+                                    droplets from Digital Ocean, the application is designed to handle realtime upload
+                                    of 250+ buses, sending hundreds of thousands of records per minute in JSON format.
+                                </p>
+
+                            </div>
+
+                            <br />
+                            <br />
+                            <br />
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-lg-6" style="display: inline-block">
+                                <p style="text-align: left;">Full Stack Engineer <a href="https://www.octillion.us/"
+                                        target="_blank"><br />@Octillion Power Systems</a></p>
+                                <p class="text-muted" style="display: inline-block; text-align: left;">I lead
+                                    development on a customer facing web application designed to track vehicles and
+                                    diagnose issues of our battery packs for India's largest electric public
+                                    transportation business. Created on the MEAN stack with the RESTful API using
+                                    droplets from Digital Ocean, the application is designed to handle realtime upload
+                                    of 250+ buses, sending hundreds of thousands of records per minute in JSON format.
+                                </p>
+
+                            </div>
+
+                            <br />
+                            <br />
+                            <br />
+                        </div>
+                        <div class="carousel-item">
+                            <div class="col-lg-6" style="display: inline-block">
+                                <p style="text-align: left;">Full Stack Engineer <a href="https://www.octillion.us/"
+                                        target="_blank"><br />@Octillion Power Systems</a></p>
+                                <p class="text-muted" style="display: inline-block; text-align: left;">I lead
+                                    development on a customer facing web application designed to track vehicles and
+                                    diagnose issues of our battery packs for India's largest electric public
+                                    transportation business. Created on the MEAN stack with the RESTful API using
+                                    droplets from Digital Ocean, the application is designed to handle realtime upload
+                                    of 250+ buses, sending hundreds of thousands of records per minute in JSON format.
+                                </p>
+
+                            </div>
+
+                            <br />
+                            <br />
+                            <br />
+                        </div>
+                    </div>
+
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                </div>
+
+
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading text-uppercase">Contact Me</h2>
+
+
+                <form class="cf">
+                    <div class="half left cf">
+                        <input type="text" id="input-name" placeholder="Name">
+                        <input type="email" id="input-email" placeholder="Email address">
+                        <input type="text" id="input-subject" placeholder="Subject">
+                    </div>
+                    <div class="half right cf">
+                        <textarea name="message" type="text" id="input-message" placeholder="Message"></textarea>
+                    </div>
+                    <input type="submit" value="Send Message" id="input-submit">
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <i class="icon ion-logo-linkedin" (click)="icon(0)"></i>
+                <i class="icon ion-logo-github" (click)="icon(1)"></i>
+                <!--
+                <i class="icon ion-md-mail" (click)="icon(2)"></i>
+                <i class="icon ion-md-call" (click)="icon(3)"></i>
+                -->
+            </div>
+        </div>
+
+
+        <br />
+        <br />
+        <br />
+        <br />
     </div>
 </section>

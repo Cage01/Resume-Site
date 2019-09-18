@@ -1,21 +1,5 @@
 @import "src/fonts.scss";
 
-canvas {
-  position: absolute;
-  width: 100%;
-  height: 400px;
-  z-index: 1;
-  margin: 0 auto;
-  left: 0%;
-
-  // -webkit-transition: opacity 1s ease-in-out;
-  // -moz-transition: opacity 1s ease-in-out;
-  // -ms-transition: opacity 1s ease-in-out;
-  // -o-transition: opacity 1s ease-in-out;
-  // transition: opacity 1s ease-in-out;
-  // opacity: 0;
-}
-
 // .intro-text:hover canvas {
 //     -webkit-transition: opacity 1s ease-in-out;
 //     -moz-transition: opacity 1s ease-in-out;
@@ -28,8 +12,16 @@ canvas {
 // Default options
 $defaultDuration: 0.3s;
 $primaryColour: #ececec;
-$secondaryColour: #666;
+$secondaryColor: #666;
+$headerColor: #cfcfcf;
 $shadowColour: rgba(0, 0, 0, 0.6);
+
+h6 {
+    @include Lato;
+}
+p {
+    @include Lato;
+}
 
 @mixin hideTapHighlightColor() {
   //Prevent highlight colour when element is tapped
@@ -48,7 +40,7 @@ $shadowColour: rgba(0, 0, 0, 0.6);
 
 .header-logo {
   @include Blackhole;
-  color: #585858;
+  color: $headerColor;
 
   font-size: 400px;
   font-weight: 500;
@@ -75,6 +67,10 @@ $shadowColour: rgba(0, 0, 0, 0.6);
   }
 }
 
+.img-overlay {
+  background: rgba(0, 0, 0, 0.45);
+}
+
 .ribbon {
   -webkit-box-shadow: 0px 0px 14px 5px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 14px 5px rgba(0, 0, 0, 0.75);
@@ -99,6 +95,9 @@ $shadowColour: rgba(0, 0, 0, 0.6);
     transform: translatey(-15px);
   }
 }
+rect {
+  opacity: 0;
+}
 
 // Styling for the masthead
 header.masthead {
@@ -106,13 +105,20 @@ header.masthead {
   color: white;
   z-index: 2;
 
-  
-
-  //background-image: url('../img/header-bg.jpg');
+  background-image: url("../../assets/color4.png");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
   background-size: cover;
+
+  //   background: #000000; /* fallback for old browsers */
+  //   background: -webkit-linear-gradient(to bottom, #26282a, #101010); /* Chrome 10-25, Safari 5.1-6 */
+  //   background: linear-gradient(
+  //     to bottom,
+  //     #26282a,
+  //     #101010
+  //   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   .intro-text {
     //padding-top: 50px;
     padding-bottom: 100px;
@@ -156,9 +162,18 @@ header.masthead {
 }
 
 .page-section {
-  background: white;
-  padding: 100px 0;
+  //background: white;
+  color: $headerColor;
 
+  background: #000000; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #26282a, #101010); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #26282a,
+    #101010
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  padding: 50px 0;
   z-index: 3;
 }
 
@@ -177,3 +192,200 @@ header.masthead {
   font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
+.center-chart {
+  display: flex;
+  //flex-direction:column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#chart-left {
+  flex: 0 0 65%;
+  padding-right: 40px;
+}
+
+#chart-right {
+  flex: 1;
+}
+
+.line-chart {
+  animation: fadeIn 600ms cubic-bezier(0.57, 0.25, 0.65, 1) 1 forwards;
+  opacity: 0;
+  max-width: 450px;
+  width: 100%;
+}
+
+.icon {
+  color: rgb(44, 108, 140);
+  font-size: 55px;
+  padding-left: 20px;
+  cursor: crosshair;
+
+  -webkit-transition: color 0.5s ease-out;
+  -moz-transition: color 0.5s ease-out;
+  -o-transition: color 0.5s ease-out;
+  transition: color 0.5s ease-out;
+
+  &:hover {
+    color: rgb(73, 173, 223);
+  }
+}
+
+.aspect-ratio {
+  height: 0;
+  padding-bottom: 50%; // 495h / 990w
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+
+form {
+  max-width: 600px;
+  text-align: center;
+  margin: 20px auto;
+}
+form input,
+form textarea {
+  border: 0;
+  outline: 0;
+  padding: 1em;
+  //-moz-border-radius: 8px;
+  //-webkit-border-radius: 8px;
+  //border-radius: 8px;
+  background: transparent;
+  color: #ececec;
+  border: solid 1px rgb(39, 96, 124);
+  display: block;
+  width: 100%;
+  margin-top: 1em;
+  @include neo-latina;
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  resize: none;
+}
+form #input-message {
+  height: 200px;
+}
+form input:focus,
+form textarea:focus {
+  -moz-box-shadow: 0 0px 2px rgb(44, 108, 140) !important;
+  -webkit-box-shadow: 0 0px 2px rgb(44, 108, 140) !important;
+  box-shadow: 0 0px 2px rgb(44, 108, 140) !important;
+}
+form #input-submit {
+  color: white;
+  background-color: rgb(44, 108, 140);
+  padding-left: 20px;
+  cursor: crosshair;
+
+  -webkit-transition: background-color 0.5s ease-out;
+  -moz-transition: background-color 0.5s ease-out;
+  -o-transition: background-color 0.5s ease-out;
+  transition: background-color 0.5s ease-out;
+}
+form #input-submit:hover {
+  background-color: rgb(73, 173, 223);
+}
+form textarea {
+  height: 126px;
+}
+
+.half {
+  float: left;
+  width: 48%;
+  margin-bottom: 1em;
+}
+
+.right {
+  width: 50%;
+}
+
+.left {
+  margin-right: 2%;
+}
+
+@media (max-width: 480px) {
+  .half {
+    width: 100%;
+    float: none;
+    margin-bottom: 0;
+  }
+}
+/* Clearfix */
+.cf:before,
+.cf:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+.cf:after {
+  clear: both;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.card {
+    background-color: #fff;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 300px;
+    height: 375px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .card .about {
+    height: 150px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .card .about h3,
+  .card .about .lead {
+    font-weight: 300;
+    margin: 0;
+  }
+  
+  .card .about h3 {
+    font-size: 24px;
+  }
+  
+  .card .about .lead {
+    color: #aaa;
+  }
+  
+  .tooltip-placeholder {
+    background-color: #fff;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #aaa;
+    font-size: 10px;
+    position: fixed;
+    padding: 4px 0;
+    display: none;
+    z-index: 2;
+  }
