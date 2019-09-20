@@ -1,8 +1,8 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Chart } from 'chart.js';
-import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 
 declare let window: any
+
 
 @Component({
     selector: 'landing-page',
@@ -10,18 +10,17 @@ declare let window: any
     styleUrls: ['./landing-page.component.scss']
 })
 
+
 export class LandingPageComponent implements OnInit {
 
-    constructor() {}
+    constructor() { }
 
     ngOnInit() {
-
 
         //Init Charts
         this.init_leftChart();
         this.init_rightChart();
         this.init_skillRadarChart();
-
 
     }
 
@@ -43,6 +42,8 @@ export class LandingPageComponent implements OnInit {
                 break;
         }
     }
+
+
 
 
     init_skillRadarChart() {
@@ -102,9 +103,9 @@ export class LandingPageComponent implements OnInit {
                                 tooltipEl.innerHTML = tooltip.body[0].lines[0];
                             }
                         } else {
-                            setTimeout(function () {
-                                tooltipEl.style.display = 'none';
-                            }, 500);
+                            // setTimeout(function () {
+                            //     tooltipEl.style.display = 'none';
+                            // }, 500);
                         }
                     },
                 },
