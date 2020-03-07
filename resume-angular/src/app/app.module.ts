@@ -5,8 +5,10 @@ import { AppComponent } from './app.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ResumeComponent } from './resume/resume.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import { ResumeComponent } from './pages/resume/resume.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
 import * as $ from 'jquery';
 
 @NgModule({
@@ -22,14 +24,15 @@ import * as $ from 'jquery';
     AppRoutingModule,
     MatDialogModule,
     BrowserAnimationsModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
 
   entryComponents: [
     LandingPageComponent
-    //DialogOverviewExampleDialog
   ],
 })
 export class AppModule { }

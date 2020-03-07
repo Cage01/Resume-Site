@@ -1,12 +1,39 @@
 const functions = require('firebase-functions');
+const admin = require('firebase-admin');
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+const express = require('express');
+const cors = require('cors');
+const app = express();
 
-exports.sentEmail = functions.https.onRequest((req, res) => {
-    
+// Automatically allow cross-origin requests
+app.use(cors({ origin: true }));
+
+admin.initializeApp();
+
+app.post('/newMessage', (req, res) => {
+
+
+    admin.firestore().collection('Messages').add(req.body).then(result => {
+        return res.json(result);
+    }).catch(err => {
+        return res.json(err);
+    });
 });
+
+app.post('/updatePageViews', (req, res) => {
+
+    let update = {
+        numOfVisits: admin.firestore.FieldValue.increment(1),
+        lastVisit: Date.now
+    }
+    admin.firestore().collection('Stats').doc('visits').update(update).then(result => {
+        return res.json(result)
+    }).catch(err => {
+        return res.json(err);
+    });
+
+
+});
+
+// Expose Express API as a single Cloud Function:
+exports.widgets = functions.https.onRequest(app);
