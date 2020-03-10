@@ -16,10 +16,16 @@ export class RequestService {
 
     constructor(private http: HttpClient) { }
 
-    sendMessage(message: any) {
+    sendMessage(message: any): any {
         let url = this.base + '/newMessage'
 
-        return this.http.post<HttpResponse<any>>(url, message, this.httpOptions);
+        return this.http.post<any>(url, message, this.httpOptions);
+    }
+
+    updatePageViews(): void {
+        let url = this.base + '/updatePageViews'
+
+        //return this.http.get
     }
 
 }

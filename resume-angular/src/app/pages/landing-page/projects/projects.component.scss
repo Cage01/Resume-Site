@@ -1,0 +1,20 @@
+@import "src/fonts.scss";
+
+p {
+  @include Lato;
+}
+
+.container {
+    margin-bottom: 60px;
+}
+
+.card {
+  background: transparent;
+  border: 1px solid #8d8d8d;
+}
+
+h2.section-heading {
+  font-size: 40px;
+  margin-top: 0;
+  margin-bottom: 15px;
+}

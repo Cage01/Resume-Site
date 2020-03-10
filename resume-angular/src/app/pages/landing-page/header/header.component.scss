@@ -1,0 +1,110 @@
+@import "src/fonts.scss";
+
+// Default options
+$defaultDuration: 0.3s;
+$primaryColour: #ececec;
+$secondaryColor: #666;
+$headerColor: #cfcfcf;
+$shadowColour: rgba(0, 0, 0, 0.6);
+
+@mixin hideTapHighlightColor() {
+  //Prevent highlight colour when element is tapped
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+@mixin hardwareAccel() {
+  //Improve performance on mobile/tablet devices
+  transform: translateZ(0);
+}
+
+@mixin improveAntiAlias() {
+  //Improve aliasing on mobile/tablet devices
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.img-overlay {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.header-logo {
+  @include Blackhole;
+  color: $headerColor;
+
+  font-size: 400px;
+  font-weight: 500;
+  margin: 0 auto;
+  z-index: 3;
+  text-shadow: 4px 3px 15px #000000;
+  transform: translatey(0px);
+
+  cursor: crosshair;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+
+  transition-duration: $defaultDuration;
+  transition-property: transform;
+
+  @include hideTapHighlightColor();
+  @include hardwareAccel();
+  @include improveAntiAlias();
+
+  &:hover {
+    transform: translateY(-10px);
+  }
+}
+
+// Styling for the masthead
+header.masthead {
+  text-align: center;
+  color: white;
+  z-index: 2;
+
+  background-image: url("../../../../assets/color4.png");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+
+  .intro-text {
+    //padding-top: 50px;
+    padding-bottom: 100px;
+    .intro-lead-in {
+      font-size: 22px;
+      font-style: italic;
+      line-height: 22px;
+      margin-bottom: 25px;
+      @include serif-font;
+    }
+    .intro-heading {
+      font-size: 50px;
+      font-weight: 700;
+      line-height: 50px;
+      margin-bottom: 25px;
+      @include heading-font;
+    }
+  }
+}
+@media (min-width: 768px) {
+  header.masthead {
+    .intro-text {
+      //padding-top: 50px;
+      padding-bottom: 100px;
+      .intro-lead-in {
+        font-size: 40px;
+        font-style: italic;
+        line-height: 40px;
+        margin-bottom: 25px;
+        @include serif-font;
+      }
+      .intro-heading {
+        font-size: 75px;
+        font-weight: 700;
+        line-height: 75px;
+        margin-bottom: 50px;
+        @include heading-font;
+      }
+    }
+  }
+}

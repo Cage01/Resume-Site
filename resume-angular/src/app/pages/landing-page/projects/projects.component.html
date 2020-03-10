@@ -1,0 +1,23 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-12 text-center" style="margin: 0 auto">
+            <h2 class="section-heading text-uppercase">Projects</h2>
+
+            <div *ngFor="let project of projects">
+                <div class="col-lg-6" style="display: inline-block; float: left; cursor: crosshair;"
+                    (click)="goToLink(project.link)">
+                    <div class="card mb-3">
+                        <img src="{{project.image}}" class="card-img-top img-overlay" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{project.title}}</h5>
+                            <p class="card-text">{{project.description}}</p>
+                            <p class="card-text"><small class="text-muted">{{project.dateCreated}}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

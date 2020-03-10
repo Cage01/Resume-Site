@@ -17,41 +17,6 @@ export class AppComponent {
 
     constructor(private router: Router) { }
 
-    title = 'Mason Richardson';
-    animal: string;
-    name: string;
-
-    skills: any[] = [
-        "UI/UX Design",
-        "MySQL",
-        "Digital Ocean",
-        "AWS",
-        "Linux",
-        "Git Version Control",
-        "Angular",
-        "NodeJS",
-        "REST API"
-    ]
-
-    mailText: string = "";
-
-
-    ngOnInit() {
-        this.mailText = "mailto:mason.p.richardson@gmail.com?subject=I saw your website!";
-
-        this.router.events.subscribe((evt) => {
-            if (!(evt instanceof NavigationEnd)) {
-                return;
-            }
-            window.scrollTo(0, 0)
-        });
-    }
-
-
-    SendEmail(): void {
-        this.mailText = "mailto:mason.p.richardson@gmail.com?subject=I saw your website!";
-        window.location.href = this.mailText;
-    }
 
     fadeOut(): void {
         TweenMax.to(".myBtn", 1, {
@@ -104,7 +69,5 @@ export class AppComponent {
             nav.classList.add("add-navbar-shadow");
         }, 4690);
     }
-
-
 }
 

@@ -1,0 +1,36 @@
+@import "src/fonts.scss";
+
+p {
+  @include Lato;
+}
+
+a {
+  color: #f53c4e;
+
+  -webkit-transition: color 0.5s ease-out;
+  -moz-transition: color 0.5s ease-out;
+  -o-transition: color 0.5s ease-out;
+  transition: color 0.5s ease-out;
+
+  &:hover {
+    text-decoration: none;
+    color: #ff6c7b;
+  }
+}
+
+.container {
+    margin-bottom: 60px;
+}
+
+.experience-location {
+  float: right;
+  line-height: 3;
+  padding-right: 10px;
+  color: #8d8d8d;
+}
+
+h2.section-heading {
+  font-size: 40px;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
